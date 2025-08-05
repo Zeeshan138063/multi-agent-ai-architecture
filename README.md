@@ -141,3 +141,10 @@ Register components with the central registry.py
 
 Use dependency injection
 ```(so components remain loosely coupled)```
+
+
+##  🧪 Example Use Cases
+- Autonomous multi-agent task planning
+- Tool-using LLMs with memory and APIs
+- Swappable adapters for model experimentation
+- LLM orchestration pipelines
