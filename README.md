@@ -148,3 +148,17 @@ Use dependency injection
 - Tool-using LLMs with memory and APIs
 - Swappable adapters for model experimentation
 - LLM orchestration pipelines
+
+
+##  🧰 Key Features
+
+| Feature                 | Description                                    |
+| ----------------------- | ---------------------------------------------- |
+| 🔄 Hot Reload           | Runtime updates without restarting             |
+| 🧠 Multi-Model Support  | Plug-and-play adapters for LLMs i.e.Swap between OpenAI, Anthropic, local models                 |
+| 📦 Plugin System        | Isolated, testable, and replaceable components |
+| 🔀 Dependency Injection | Loose coupling and easier testing              |
+| 📡 Event Bus            | Async communication between components for non-blocking service coordination         |
+| 🌐 Service Mesh         | Each service is autonomous and configurable    |
+| 🔥 Interface-first          | Ensures clean and scalable extensibility                                        |
+
