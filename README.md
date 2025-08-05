@@ -144,10 +144,12 @@ Use dependency injection
 
 
 ##  🧪 Example Use Cases
-- Autonomous multi-agent task planning
+- 🕸️ Autonomous multi-agent task planning
 - Tool-using LLMs with memory and APIs
 - Swappable adapters for model experimentation
-- LLM orchestration pipelines
+- 📊 LLM orchestration pipelines i.e.  AI workflow orchestration engines
+- 🤖 Multi-agent LLM systems
+- 🧠 LLM memory chains with pluggable stores
 
 
 ##  🧰 Key Features
@@ -155,10 +157,16 @@ Use dependency injection
 | Feature                 | Description                                    |
 | ----------------------- | ---------------------------------------------- |
 | 🔄 Hot Reload           | Runtime updates without restarting             |
-| 🧠 Multi-Model Support  | Plug-and-play adapters for LLMs i.e.Swap between OpenAI, Anthropic, local models                 |
+| 🧠 Multi-Model Support  | Plug-and-play adapters for LLMs i.e.Swap between OpenAI, Anthropic, local models |
 | 📦 Plugin System        | Isolated, testable, and replaceable components |
 | 🔀 Dependency Injection | Loose coupling and easier testing              |
-| 📡 Event Bus            | Async communication between components for non-blocking service coordination         |
+| 📡 Event Bus            | Async communication between components for non-blocking service coordination |
 | 🌐 Service Mesh         | Each service is autonomous and configurable    |
-| 🔥 Interface-first          | Ensures clean and scalable extensibility                                        |
+| 🔥 Interface-first          | Ensures clean and scalable extensibility   |
 
+
+
+### 👏 Acknowledgments
+Architecture created by Brij Kishore Pandey
+
+#### 🌟 Star this repo if it helped you — or if you're building a production-grade agentic system.
