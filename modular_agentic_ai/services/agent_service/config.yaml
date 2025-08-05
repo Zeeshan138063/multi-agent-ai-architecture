@@ -1,0 +1,42 @@
+# Agent Service Configuration
+
+service_name: "agent_service"
+version: "1.0.0"
+
+# Agent management settings
+agent_management:
+  max_agents: 50
+  health_check_interval: 30  # seconds
+  auto_restart_failed: true
+  load_balancing: true
+
+# Communication settings
+communication:
+  max_message_size: 1048576  # 1MB
+  timeout: 30  # seconds
+  retry_attempts: 3
+  enable_logging: true
+
+# Performance settings
+performance:
+  metrics_retention_days: 7
+  max_history_size: 1000
+  enable_profiling: false
+
+# Logging
+logging:
+  level: "INFO"
+  file: "logs/agent_service.log"
+  max_size: "10MB"
+  backup_count: 5
+
+# Event bus settings
+events:
+  subscribe_to:
+    - "agent.register"
+    - "agent.communication"
+    - "system.shutdown"
+  publish_events:
+    - "agent.registered"
+    - "agent.unregistered"
+    - "agent.task_executed"

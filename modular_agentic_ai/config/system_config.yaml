@@ -1,0 +1,203 @@
+# Modular Agentic AI System Configuration
+# This file defines the overall system configuration including all components
+
+system:
+  name: "Modular Agentic AI System"
+  version: "1.0.0"
+  description: "A modular, plugin-based agentic AI architecture"
+  log_level: "INFO"
+  
+# Core engine configuration
+engine:
+  max_concurrent_tasks: 10
+  task_timeout_seconds: 300
+  enable_metrics: true
+  metrics_collection_interval: 60
+  
+# Service registry configuration
+registry:
+  auto_discovery: true
+  plugin_directories:
+    - "plugins/agents"
+    - "plugins/tools" 
+    - "plugins/memory"
+  health_check_interval: 30
+  component_timeout: 10
+
+# Event bus configuration
+event_bus:
+  max_queue_size: 1000
+  event_history_size: 10000
+  enable_event_logging: true
+  log_file: "logs/events.log"
+
+# Default agent configurations
+agents:
+  reasoning_agent:
+    enabled: true
+    max_reasoning_steps: 10
+    confidence_threshold: 0.7
+    config:
+      log_level: "INFO"
+      
+  planning_agent:
+    enabled: true
+    max_plan_complexity: 50
+    default_planning_horizon_hours: 24
+    config:
+      log_level: "INFO"
+      
+  execution_agent:
+    enabled: true
+    max_concurrent_tasks: 5
+    default_timeout_seconds: 300
+    config:
+      log_level: "INFO"
+
+# Default tool configurations  
+tools:
+  web_search_tool:
+    enabled: true
+    max_results: 10
+    cache_ttl_seconds: 3600
+    search_engines:
+      - "google"
+      - "bing"
+      - "duckduckgo"
+    config:
+      log_level: "INFO"
+      
+  code_execution_tool:
+    enabled: true
+    supported_languages:
+      - "python"
+      - "javascript"
+      - "shell"
+      - "sql"
+    default_timeout_seconds: 30
+    max_output_size_bytes: 1048576
+    config:
+      log_level: "INFO"
+      
+  api_client_tool:
+    enabled: true
+    default_timeout_seconds: 30
+    max_retries: 3
+    enable_caching: true
+    cache_ttl_seconds: 300
+    config:
+      log_level: "INFO"
+
+# Default memory configurations
+memory:
+  vector_memory:
+    enabled: true
+    embedding_dimension: 768
+    similarity_metric: "cosine"
+    max_entries: 10000
+    consolidation_threshold: 0.95
+    config:
+      log_level: "INFO"
+      
+  graph_memory:
+    enabled: true
+    max_nodes: 10000
+    max_edges: 50000
+    auto_create_relationships: true
+    relationship_threshold: 0.7
+    config:
+      log_level: "INFO"
+
+# Model adapter configurations
+adapters:
+  openai:
+    enabled: false  # Set to true and configure if using OpenAI
+    default_model: "gpt-3.5-turbo"
+    default_embedding_model: "text-embedding-ada-002"
+    max_requests_per_minute: 60
+    timeout_seconds: 60
+    config:
+       api_key: "your-openai-api-key"
+      # organization: "your-org-id"
+      log_level: "INFO"
+      
+  anthropic:
+    enabled: false  # Set to true and configure if using Anthropic
+    default_model: "claude-3-sonnet-20240229"
+    max_tokens_default: 4096
+    max_requests_per_minute: 50
+    timeout_seconds: 60
+    config:
+      # api_key: "your-anthropic-api-key"
+      log_level: "INFO"
+      
+  local_model:
+    enabled: false  # Set to true and configure if using local models
+    model_type: "transformers"  # transformers, onnx, ollama, custom
+    device: "cpu"  # cpu, cuda, mps
+    max_length: 2048
+    batch_size: 1
+    enable_batching: false
+    config:
+      # model_path: "/path/to/your/model"
+      temperature: 0.7
+      top_p: 0.9
+      top_k: 50
+      log_level: "INFO"
+
+# Service-specific configurations
+services:
+  agent_service:
+    max_agents: 50
+    health_check_interval: 30
+    auto_restart_failed: true
+    load_balancing: true
+    
+  memory_service:
+    cache_ttl_minutes: 30
+    max_concurrent_operations: 100
+    operation_timeout: 30
+    enable_compression: true
+    
+  planning_service:
+    max_concurrent_tasks: 10
+    task_timeout: 300
+    queue_size: 1000
+    default_strategy: "sequential"
+
+# Logging configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  handlers:
+    console:
+      enabled: true
+      level: "INFO"
+    file:
+      enabled: true
+      level: "DEBUG"
+      filename: "logs/system.log"
+      max_size: "10MB"
+      backup_count: 5
+      
+# Security configuration
+security:
+  enable_api_key_auth: false
+  enable_rate_limiting: true
+  max_requests_per_hour: 1000
+  allowed_hosts: []
+  blocked_hosts: []
+  
+# Performance configuration
+performance:
+  enable_profiling: false
+  enable_monitoring: true
+  metrics_export_interval: 300
+  memory_limit_mb: 2048
+  
+# Development configuration
+development:
+  debug_mode: false
+  enable_hot_reload: false
+  mock_external_services: true
+  enable_test_mode: false

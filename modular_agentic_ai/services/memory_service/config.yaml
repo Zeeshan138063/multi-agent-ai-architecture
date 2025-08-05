@@ -1,0 +1,68 @@
+# Memory Service Configuration
+
+service_name: "memory_service"
+version: "1.0.0"
+
+# Cache settings
+cache:
+  ttl_minutes: 30
+  max_size: 10000
+  cleanup_interval: 300  # seconds
+
+# Memory backend settings
+backends:
+  vector_memory:
+    type: "vector"
+    enabled: true
+    config:
+      dimension: 1536
+      similarity_metric: "cosine"
+      index_type: "hnsw"
+  
+  graph_memory:
+    type: "graph"
+    enabled: true
+    config:
+      max_nodes: 100000
+      max_edges: 500000
+
+# Memory routing
+routing:
+  default: "vector_memory"
+  episodic: "vector_memory"
+  semantic: "vector_memory"
+  procedural: "graph_memory"
+  working: "vector_memory"
+
+# Performance settings
+performance:
+  max_concurrent_operations: 100
+  operation_timeout: 30  # seconds
+  enable_compression: true
+  batch_size: 50
+
+# Search settings
+search:
+  default_limit: 10
+  max_limit: 100
+  default_similarity_threshold: 0.7
+  enable_fuzzy_search: true
+
+# Logging
+logging:
+  level: "INFO"
+  file: "logs/memory_service.log"
+  max_size: "10MB"
+  backup_count: 5
+
+# Event bus settings
+events:
+  subscribe_to:
+    - "memory.register"
+    - "memory.cleanup"
+    - "system.shutdown"
+  publish_events:
+    - "memory.stored"
+    - "memory.searched"
+    - "memory.deleted"
+    - "memory.backend_registered"

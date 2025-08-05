@@ -1,0 +1,79 @@
+# Planning Service Configuration
+
+service_name: "planning_service"
+version: "1.0.0"
+
+# Task execution settings
+execution:
+  max_concurrent_tasks: 10
+  task_timeout: 300  # seconds
+  retry_attempts: 3
+  queue_size: 1000
+
+# Planning strategies
+strategies:
+  default: "sequential"
+  available:
+    - "sequential"
+    - "parallel" 
+    - "hybrid"
+  
+  # Strategy-specific settings
+  sequential:
+    max_chain_length: 20
+    enable_optimization: true
+  
+  parallel:
+    max_parallel_tasks: 5
+    resource_aware: true
+  
+  hybrid:
+    parallel_threshold: 3
+    sequential_fallback: true
+
+# Dependency management
+dependencies:
+  max_depth: 10
+  circular_detection: true
+  timeout_orphaned_tasks: true
+  orphan_timeout: 600  # seconds
+
+# Resource management
+resources:
+  enable_resource_tracking: true
+  max_memory_per_task: "1GB"
+  max_cpu_per_task: 2
+  enable_load_balancing: true
+
+# Performance settings
+performance:
+  plan_cache_size: 100
+  task_history_retention_days: 30
+  enable_metrics: true
+  metrics_interval: 60  # seconds
+
+# Priority handling
+priority:
+  enable_priority_boosting: true
+  aging_factor: 1.1
+  critical_task_preemption: true
+
+# Logging
+logging:
+  level: "INFO"
+  file: "logs/planning_service.log"
+  max_size: "10MB"
+  backup_count: 5
+
+# Event bus settings
+events:
+  subscribe_to:
+    - "task.created"
+    - "task.completed"
+    - "agent.available"
+    - "system.shutdown"
+  publish_events:
+    - "task.started"
+    - "task.completed"
+    - "plan.created"
+    - "plan.execution_started"
