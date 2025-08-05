@@ -114,3 +114,30 @@ modular_agentic_ai/
 │
 ├── requirements.txt
 └── README.md
+```
+
+## 🗂 Design Principles
+
+
+| Principle                    | Description                               |
+| ---------------------------- | ----------------------------------------- |
+| 🔌 Plugin-based architecture | Load modules dynamically at runtime       |
+| 🔄 Interface segregation     | Prevent tight coupling between components |
+| 📦 Dependency injection      | Swappable and testable modules            |
+| ⚡ Event-driven messaging     | Services interact via async events        |
+| 🧊 Hot-swappable components  | Replace without restarting the system     |
+
+
+
+## 🧩 Plugin System Explained
+Define interfaces for all component types
+```(e.g., agent, tool, memory)```
+
+Implement plugins following the interface contracts
+```(e.g., execution_agent.py implements agent_interface.py)```
+
+Register components with the central registry.py
+```(used for dynamic discovery and hot-swap)```
+
+Use dependency injection
+```(so components remain loosely coupled)```
